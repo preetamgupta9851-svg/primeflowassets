@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrimeFlow Asset Ventures LLP — Lease-Based Financing & Premium Asset Leasing</title>
+  <meta name="description" content="PrimeFlow Asset Ventures LLP provides lease-based financing for robotics and commercial equipment with escrow-backed collections and disciplined risk controls." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --surface:#0f1b33;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --text:#0b1220;
+      --brand:#1e3c72;
+      --brand2:#2a5298;
+      --accent:#ff6b35;
+      --accent2:#ff8555;
+      --line: rgba(15, 23, 42, 0.10);
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.10);
+      --shadow2: 0 16px 45px rgba(2, 6, 23, 0.16);
+      --radius: 16px;
+      --radius2: 22px;
+      --max: 1180px;
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.6;
+      color: #0f172a;
+      background:
+        radial-gradient(1100px 500px at 10% -10%, rgba(42,82,152,0.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(255,107,53,0.10), transparent 55%),
+        #f5f7fb;
+      overflow-x:hidden;
+    }
+
+    /* ---------- Top Nav (Right-aligned) ---------- */
+    .topbar{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:50;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#0f172a;
+      font-weight:800;
+      letter-spacing:0.2px;
+      white-space:nowrap;
+    }
+    .logo{
+      width:36px; height:36px;
+      border-radius:12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 8px 22px rgba(30,60,114,0.25);
+      display:grid; place-items:center;
+      color:#fff;
+      font-weight:900;
+      font-size:14px;
+    }
+    .brand small{
+      display:block;
+      font-weight:600;
+      color: rgba(15, 23, 42, 0.65);
+      font-size:12px;
+      letter-spacing:0.2px;
+      margin-top:-2px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .nav a{
+      text-decoration:none;
+      color: rgba(15, 23, 42, 0.78);
+      font-weight:700;
+      font-size: 13px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: all .2s ease;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: #0f172a;
+      background: rgba(42,82,152,0.08);
+      border-color: rgba(42,82,152,0.12);
+    }
+    .nav a.active{
+      color: #0b1220;
+      background: rgba(255,107,53,0.16);
+      border-color: rgba(255,107,53,0.25);
+    }
+
+    .nav .primary{
+      background: var(--accent);
+      color:#fff;
+      border-color: rgba(255,107,53,0.35);
+      box-shadow: 0 10px 25px rgba(255,107,53,0.25);
+    }
+    .nav .primary:hover{
+      background: var(--accent2);
+      color:#fff;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile menu */
+    .menu-btn{
+      display:none;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(15,23,42,0.10);
+      background:#fff;
+      padding:10px 12px;
+      border-radius: 12px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .menu-panel{
+      display:none;
+      position: fixed;
+      top: 64px;
+      right: 14px;
+      left: 14px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,0.10);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: 10px;
+      z-index: 60;
+    }
+    .menu-panel a{
+      display:block;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight:800;
+      color:#0f172a;
+      text-decoration:none;
+      border: 1px solid transparent;
+    }
+    .menu-panel a:hover{ background: rgba(42,82,152,0.08); border-color: rgba(42,82,152,0.12); }
+    .menu-panel a.primary{ background: var(--accent); color:#fff; }
+    .menu-panel a.primary:hover{ background: var(--accent2); }
+
+    /* ---------- Layout ---------- */
+    .spacer{ height: 70px; } /* offset for fixed header */
+
+    .container{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 64px 18px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size: clamp(26px, 2.5vw, 40px);
+      margin-bottom: 16px;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle{
+      text-align:center;
+      max-width: 820px;
+      margin:0 auto 38px;
+      color: rgba(15, 23, 42, 0.70);
+      font-weight: 600;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      position:relative;
+      color: #fff;
+      padding: 110px 18px 64px;
+      background:
+        radial-gradient(900px 600px at 25% 30%, rgba(255,107,53,0.16), transparent 55%),
+        radial-gradient(900px 650px at 80% 10%, rgba(255,255,255,0.14), transparent 50%),
+        linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      overflow:hidden;
+    }
+    .hero-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-weight:800;
+      font-size: 13px;
+      letter-spacing:0.2px;
+      width: fit-content;
+    }
+    .pill svg{ opacity: 0.95; }
+
+    .hero h1{
+      font-size: clamp(34px, 3.4vw, 56px);
+      line-height:1.07;
+      letter-spacing:-0.03em;
+      margin-top: 14px;
+      margin-bottom: 12px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.20);
+    }
+    .hero p{
+      font-size: 16px;
+      max-width: 620px;
+      opacity: 0.95;
+      margin-bottom: 18px;
+    }
+    .hero .lease-desc{
+      margin-top: 10px;
+      background: rgba(11, 18, 32, 0.25);
+      border: 1px solid rgba(255,255,255,0.20);
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-weight: 650;
+      color: rgba(255,255,255,0.95);
+    }
+    .hero-actions{
+      margin-top: 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      color:#fff;
+      text-decoration:none;
+      transition: all .22s ease;
+      user-select:none;
+    }
+    .btn.primary{
+      background: var(--accent);
+      border-color: rgba(255,107,53,0.35);
+      box-shadow: 0 12px 30px rgba(255,107,53,0.30);
+    }
+    .btn.primary:hover{ background: var(--accent2); transform: translateY(-1px); }
+    .btn.secondary{
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(6px);
+    }
+    .btn.secondary:hover{ background: rgba(255,255,255,0.16); transform: translateY(-1px); }
+
+    .hero-card{
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 18px 55px rgba(2,6,23,0.25);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(400px 200px at 20% 10%, rgba(255,107,53,0.25), transparent 55%);
+      pointer-events:none;
+    }
+    .hero-card h3{
+      position:relative;
+      font-size: 16px;
+      letter-spacing:0.2px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.92);
+    }
+    .mini-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .mini{
+      background: rgba(11,18,32,0.25);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px;
+      padding: 12px 12px;
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+    }
+    .mini .k{ font-size: 12px; color: rgba(255,255,255,0.80); font-weight: 800; }
+    .mini .v{ font-size: 18px; font-weight: 950; color:#fff; letter-spacing:-0.02em; }
+
+    .hero-illustration{
+      position:relative;
+      width:100%;
+      height: 260px;
+      margin-top: 14px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(11,18,32,0.22);
+    }
+    .hero-illustration svg{
+      width:100%; height:100%;
+      display:block;
+    }
+
+    /* ---------- Cards & Grids ---------- */
+    .grid-4{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .card{
+      background:#fff;
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+    }
+    .card .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      background: rgba(42,82,152,0.10);
+      border: 1px solid rgba(42,82,152,0.14);
+      display:grid; place-items:center;
+      margin-bottom: 12px;
+    }
+    .card .value{
+      font-size: 30px;
+      font-weight: 950;
+      color: var(--accent);
+      letter-spacing:-0.02em;
+    }
+    .card .label{
+      margin-top: 6px;
+      font-weight: 850;
+      color: rgba(15,23,42,0.82);
+    }
+    .card .hint{
+      margin-top: 6px;
+      color: rgba(15,23,42,0.64);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* ---------- Infographic: Lease explainer ---------- */
+    .infographic{
+      margin-top: 28px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    .info{
+      background: linear-gradient(180deg, rgba(42,82,152,0.08), rgba(255,255,255,0.0));
+      border: 1px solid rgba(42,82,152,0.12);
+      border-radius: var(--radius);
+      padding: 16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .info:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(420px 200px at 20% 10%, rgba(255,107,53,0.12), transparent 55%);
+      pointer-events:none;
+    }
+    .info h3{
+      position:relative;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      font-size: 15px;
+      color: rgba(15,23,42,0.90);
+      font-weight: 950;
+      margin-bottom: 10px;
+    }
+    .info p{ position:relative; color: rgba(15,23,42,0.70); font-weight: 650; font-size: 14px; }
+    .info .badge{
+      position:absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 12px;
+      font-weight: 950;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,107,53,0.14);
+      border: 1px solid rgba(255,107,53,0.20);
+      color: rgba(15,23,42,0.85);
+    }
+
+    /* ---------- Process ---------- */
+    .soft{
+      background: linear-gradient(180deg, rgba(15,23,42,0.03), rgba(15,23,42,0.00));
+      border-top: 1px solid rgba(15,23,42,0.06);
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .step{
+      background:#fff;
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .step .n{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px; height:38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      font-weight:950;
+      box-shadow: 0 12px 30px rgba(30,60,114,0.18);
+      margin-bottom: 12px;
+    }
+    .step h3{ font-size: 16px; font-weight: 950; color: rgba(15,23,42,0.90); margin-bottom: 8px; }
+    .step p{ color: rgba(15,23,42,0.70); font-weight: 650; font-size: 14px; }
+
+    /* ---------- Highlights ---------- */
+    .highlights{
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .highlight{
+      border-radius: var(--radius2);
+      padding: 18px 16px;
+      color:#fff;
+      background: linear-gradient(135deg, rgba(30,60,114,1), rgba(42,82,152,1));
+      box-shadow: 0 18px 55px rgba(30,60,114,0.18);
+      border: 1px solid rgba(255,255,255,0.14);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .highlight:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(420px 200px at 20% 10%, rgba(255,107,53,0.22), transparent 60%);
+      pointer-events:none;
+    }
+    .highlight h3{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size: 16px;
+      font-weight: 950;
+      margin-bottom: 8px;
+    }
+    .highlight p{ position:relative; opacity: 0.92; font-weight: 650; font-size: 14px; }
+
+    /* ---------- Returns ---------- */
+    .returns{
+      background: radial-gradient(900px 450px at 20% 0%, rgba(255,107,53,0.16), transparent 55%),
+                  linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      color:#fff;
+      padding: 72px 18px;
+    }
+    .returns .container{ padding: 0 18px; }
+    .returns .section-title{ color:#fff; }
+    .returns .section-subtitle{ color: rgba(255,255,255,0.82); }
+
+    .return-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .return-card{
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 45px rgba(2,6,23,0.22);
+    }
+    .return-card h3{
+      font-size: 18px;
+      font-weight: 950;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,0.95);
+    }
+    .return-item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-weight: 700;
+    }
+    .return-item:last-child{ border-bottom:none; }
+    .total{
+      text-align:center;
+      margin-top: 18px;
+      font-size: 15px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.92);
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq{
+      max-width: 920px;
+      margin: 0 auto;
+      margin-top: 26px;
+    }
+    .faq-item{
+      background:#fff;
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: 16px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+    }
+    .faq-q{
+      padding: 16px 16px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight: 950;
+      color: rgba(15,23,42,0.88);
+      background: linear-gradient(180deg, rgba(42,82,152,0.06), rgba(255,255,255,0));
+    }
+    .faq-a{
+      padding: 0 16px;
+      max-height: 0;
+      overflow:hidden;
+      transition: all .28s ease;
+      color: rgba(15,23,42,0.70);
+      font-weight: 650;
+    }
+    .faq-a.active{
+      padding: 14px 16px 16px;
+      max-height: 220px;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact{
+      background: radial-gradient(900px 450px at 80% 0%, rgba(255,107,53,0.16), transparent 55%),
+                  linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      color:#fff;
+      padding: 72px 18px;
+    }
+    .contact .section-title{ color:#fff; }
+    .contact .section-subtitle{ color: rgba(255,255,255,0.82); }
+    .contacts{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      max-width: 860px;
+      margin: 26px auto 0;
+    }
+    .contact-card{
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 18px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 16px 45px rgba(2,6,23,0.22);
+    }
+    .contact-card h3{ font-size: 18px; font-weight: 950; margin-bottom: 10px; }
+    .contact-card a{ color:#fff; text-decoration:none; font-weight: 850; }
+    .contact-card a:hover{ color: #ffe0d5; }
+
+    /* ---------- Motion ---------- */
+    .fade-in{
+      opacity: 0;
+      transform: translateY(22px);
+      transition: all .65s ease;
+    }
+    .fade-in.visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Footer ---------- */
+    footer{
+      padding: 28px 18px;
+      color: rgba(15,23,42,0.68);
+      text-align:center;
+      font-weight: 650;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .grid-4{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .highlights{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .steps{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .infographic{ grid-template-columns: 1fr; }
+      .return-grid{ grid-template-columns: 1fr; }
+      .contacts{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .nav{ display:none; }
+      .menu-btn{ display:inline-flex; }
+      .spacer{ height: 66px; }
+      .steps{ grid-template-columns: 1fr; }
+      .grid-4{ grid-template-columns: 1fr; }
+      .highlights{ grid-template-columns: 1fr; }
+      .hero{ padding-top: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation (right-aligned section jump) -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="PrimeFlow home">
+        <span class="logo">PF</span>
+        <span>
+          PrimeFlow Asset Ventures LLP
+          <small>Lease-based financing for robotics & commercial equipment</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Section navigation">
+        <a href="#highlights" data-link>Highlights</a>
+        <a href="#how-it-works" data-link>How it works</a>
+        <a href="#why" data-link>Why PrimeFlow</a>
+        <a href="#timeline" data-link>Timeline</a>
+        <a href="#faq" data-link>FAQ</a>
+        <a href="#contact" class="primary">Talk to us</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <span>Menu</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div class="menu-panel" id="menuPanel" role="dialog" aria-label="Mobile menu">
+      <a href="#highlights" data-link>Highlights</a>
+      <a href="#how-it-works" data-link>How it works</a>
+      <a href="#why" data-link>Why PrimeFlow</a>
+      <a href="#timeline" data-link>Timeline</a>
+      <a href="#faq" data-link>FAQ</a>
+      <a href="#contact" class="primary">Talk to us</a>
+    </div>
+  </header>
+
+  <div id="top" class="spacer" aria-hidden="true"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="pill fade-in">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l2.3 6.7H21l-5.4 4 2.1 6.8L12 15.8 6.3 19.5l2.1-6.8L3 8.7h6.7L12 2z" stroke="rgba(255,255,255,0.92)" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          Premium Asset Leasing • Escrow-backed collections
+        </div>
+
+        <h1 class="fade-in">Lease-Based Financing for High-Value Equipment</h1>
+        <p class="fade-in">
+          PrimeFlow is a forward-looking asset leasing firm specializing in <strong>finance leases</strong> for robotics and commercial equipment—designed to unlock growth for operators while offering stable, cash-flow backed investment outcomes.
+        </p>
+
+        <!-- Small description at the top (requested) -->
+        <div class="lease-desc fade-in">
+          <strong>What is lease-based financing?</strong><br/>
+          We procure the asset and lease it to the end-user against predictable monthly rentals. Collections are structured through an escrow mechanism and monitored with disciplined risk controls—helping align growth, safety, and transparency.
+        </div>
+
+        <div class="hero-actions fade-in">
+          <a class="btn primary" href="#contact">
+            Partner With Us
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h12m0 0l-5-5m5 5l-5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="btn secondary" href="#how-it-works">See the model</a>
+        </div>
+      </div>
+
+      <!-- Hero right card with infographic-like mini KPIs + illustration -->
+      <aside class="hero-card fade-in" aria-label="Key metrics and illustration">
+        <h3>At-a-glance (illustrative)</h3>
+
+        <div class="mini-grid" role="list">
+          <div class="mini" role="listitem">
+            <div class="k">Target IRR</div>
+            <div class="v">14%</div>
+          </div>
+          <div class="mini" role="listitem">
+            <div class="k">Minimum Investment</div>
+            <div class="v">₹25L</div>
+          </div>
+          <div class="mini" role="listitem">
+            <div class="k">Monthly Payout</div>
+            <div class="v">₹85,444</div>
+          </div>
+          <div class="mini" role="listitem">
+            <div class="k">Value After 3 Years</div>
+            <div class="v">₹36.8L</div>
+          </div>
+        </div>
+
+        <!-- Inline SVG "relevant image" (no external dependency) -->
+        <div class="hero-illustration" aria-hidden="true">
+          <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(255,255,255,0.18)"/>
+                <stop offset="1" stop-color="rgba(255,255,255,0.06)"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="rgba(255,107,53,0.35)"/>
+                <stop offset="1" stop-color="rgba(255,107,53,0.10)"/>
+              </linearGradient>
+              <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="rgba(0,0,0,0.18)"/>
+              </filter>
+            </defs>
+
+            <rect x="0" y="0" width="900" height="300" fill="url(#g1)"/>
+            <!-- Chart bars -->
+            <g filter="url(#s)">
+              <rect x="90" y="160" width="70" height="95" rx="12" fill="rgba(255,255,255,0.22)"/>
+              <rect x="185" y="130" width="70" height="125" rx="12" fill="rgba(255,255,255,0.26)"/>
+              <rect x="280" y="105" width="70" height="150" rx="12" fill="rgba(255,255,255,0.30)"/>
+              <rect x="375" y="75" width="70" height="180" rx="12" fill="url(#g2)"/>
+            </g>
+
+            <!-- Shield + check -->
+            <g transform="translate(560,66)" filter="url(#s)">
+              <path d="M90 0l70 25v70c0 60-70 98-70 98S20 155 20 95V25L90 0z" fill="rgba(255,255,255,0.22)"/>
+              <path d="M60 90l20 22 45-52" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- Equipment icon -->
+            <g transform="translate(525,205)">
+              <rect x="0" y="12" width="210" height="52" rx="16" fill="rgba(255,255,255,0.18)"/>
+              <circle cx="45" cy="68" r="12" fill="rgba(255,255,255,0.26)"/>
+              <circle cx="165" cy="68" r="12" fill="rgba(255,255,255,0.26)"/>
+              <rect x="38" y="0" width="28" height="26" rx="10" fill="rgba(255,255,255,0.25)"/>
+              <rect x="72" y="-4" width="110" height="36" rx="16" fill="rgba(255,255,255,0.22)"/>
+            </g>
+
+            <!-- Soft grid -->
+            <path d="M0 260H900" stroke="rgba(255,255,255,0.18)"/>
+            <path d="M0 220H900" stroke="rgba(255,255,255,0.10)"/>
+            <path d="M0 180H900" stroke="rgba(255,255,255,0.10)"/>
+          </svg>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Investment Highlights -->
+  <section id="highlights" class="container">
+    <h2 class="section-title fade-in">Investment Highlights</h2>
+    <p class="section-subtitle fade-in">
+      Clear, investor-friendly structure supported by escrow-backed collections, asset monitoring, and aligned promoter participation.
+    </p>
+
+    <div class="grid-4">
+      <div class="card fade-in">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="value">14%</div>
+        <div class="label">Target IRR</div>
+        <div class="hint">Illustrative return profile (not a guarantee)</div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3v18M7 7h10M7 17h10" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="value">₹25L</div>
+        <div class="label">Minimum Investment</div>
+        <div class="hint">Designed for serious long-term investors</div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 8h16M6 8l1 12h10l1-12" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M9 8V6a3 3 0 016 0v2" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="value">₹85,444</div>
+        <div class="label">Monthly Payout</div>
+        <div class="hint">Cash flow from month one (net of expenses)</div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 6v6l4 2" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="rgba(30,60,114,0.95)" stroke-width="2.2"/>
+          </svg>
+        </div>
+        <div class="value">₹36.8L</div>
+        <div class="label">Value After 3 Years</div>
+        <div class="hint">Combined payouts + reinvested value (illustrative)</div>
+      </div>
+    </div>
+
+    <!-- Infographics (requested) -->
+    <div class="infographic">
+      <div class="info fade-in">
+        <span class="badge">Structure</span>
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h10M4 17h16" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          Lease-based cashflows
+        </h3>
+        <p>Investor returns are linked to recurring lease rentals from deployed assets—built for predictability and visibility.</p>
+      </div>
+
+      <div class="info fade-in">
+        <span class="badge">Safety</span>
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l7 4v6c0 5-3 8-7 8s-7-3-7-8V7l7-4z" stroke="rgba(30,60,114,0.95)" stroke-width="2.2"/>
+            <path d="M9 12l2 2 4-5" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Escrow-backed collections
+        </h3>
+        <p>Monthly rentals are collected through an escrow arrangement, enabling disciplined repayment routing and controls.</p>
+      </div>
+
+      <div class="info fade-in">
+        <span class="badge">Alignment</span>
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16 11a4 4 0 10-8 0v2a4 4 0 108 0v-2z" stroke="rgba(30,60,114,0.95)" stroke-width="2.2"/>
+            <path d="M12 7V5" stroke="rgba(30,60,114,0.95)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          Promoter co-investment
+        </h3>
+        <p>Promoters invest a minimum of 20% capital to keep incentives aligned and strengthen confidence in the structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business model / Process -->
+  <section id="how-it-works" class="soft">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Business Model</h2>
+      <p class="section-subtitle fade-in">
+        A structured end-to-end cycle: procure, deploy, collect, monitor, and transfer—built for transparency and governance.
+      </p>
+
+      <div class="steps">
+        <div class="step fade-in">
+          <div class="n">1</div>
+          <h3>Client request</h3>
+          <p>Clients share a detailed list of equipment to be procured along with deployment requirements.</p>
+        </div>
+
+        <div class="step fade-in">
+          <div class="n">2</div>
+          <h3>Asset procurement</h3>
+          <p>PrimeFlow purchases the equipment on behalf of the client and formalizes the finance lease agreement.</p>
+        </div>
+
+        <div class="step fade-in">
+          <div class="n">3</div>
+          <h3>Deployment & use</h3>
+          <p>Assets are installed at the client site and monetized immediately through business operations.</p>
+        </div>
+
+        <div class="step fade-in">
+          <div class="n">4</div>
+          <h3>Escrow-backed collections</h3>
+          <p>Monthly lease rentals are collected through escrow for tighter repayment discipline and safety.</p>
+        </div>
+
+        <div class="step fade-in">
+          <div class="n">5</div>
+          <h3>Monitoring & risk control</h3>
+          <p>Regular inspections and contract penalties for misuse, damage, or deviation from agreed usage.</p>
+        </div>
+
+        <div class="step fade-in">
+          <div class="n">6</div>
+          <h3>Ownership transfer</h3>
+          <p>Upon lease completion, ownership transfers to the client at a nominal value as per agreement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose PrimeFlow -->
+  <section id="why" class="container">
+    <h2 class="section-title fade-in">Why Choose PrimeFlow</h2>
+    <p class="section-subtitle fade-in">
+      Built like a financial services business: clear governance, strong controls, and focus on long-term trust.
+    </p>
+
+    <div class="highlights">
+      <div class="highlight fade-in">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2v20M4 6h16M4 18h16" stroke="rgba(255,255,255,0.92)" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          Immediate income
+        </h3>
+        <p>Monthly EMI payouts from the first month for cash-flow visibility.</p>
+      </div>
+
+      <div class="highlight fade-in">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3l7 4v6c0 5-3 8-7 8s-7-3-7-8V7l7-4z" stroke="rgba(255,255,255,0.92)" stroke-width="2.2"/>
+          </svg>
+          Risk management
+        </h3>
+        <p>Escrow-backed collections, monitoring, and enforcement levers for protection.</p>
+      </div>
+
+      <div class="highlight fade-in">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 12h18M7 7l-4 5 4 5" stroke="rgba(255,255,255,0.92)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 7l-4 5 4 5" stroke="rgba(255,255,255,0.92)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Optimized benefits
+        </h3>
+        <p>Slab rates for interest; potential reduction in MF capital gains (as applicable).</p>
+      </div>
+
+      <div class="highlight fade-in">
+        <h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16 11a4 4 0 10-8 0v2a4 4 0 108 0v-2z" stroke="rgba(255,255,255,0.92)" stroke-width="2.2"/>
+          </svg>
+          Shared success
+        </h3>
+        <p>Promoters co-invest a minimum 20% capital to align incentives and accountability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Returns / Timeline -->
+  <section id="timeline" class="returns">
+    <div class="container">
+      <h2 class="section-title fade-in">3-Year Investment Timeline</h2>
+      <p class="section-subtitle fade-in">
+        Example schedule showing monthly payout and mutual fund (MF) value progression—illustrative only.
+      </p>
+
+      <div class="return-grid">
+        <div class="return-card fade-in">
+          <h3>First Year Returns</h3>
+          <div class="return-item"><span>Monthly Payout</span><strong>₹85,444</strong></div>
+          <div class="return-item"><span>Annual Payout</span><strong>₹10,25,329</strong></div>
+          <div class="return-item"><span>MF Value End Y1</span><strong>₹10,83,645</strong></div>
+        </div>
+
+        <div class="return-card fade-in">
+          <h3>Second Year Returns</h3>
+          <div class="return-item"><span>Monthly Payout</span><strong>₹85,444</strong></div>
+          <div class="return-item"><span>Annual Payout</span><strong>₹10,25,329</strong></div>
+          <div class="return-item"><span>MF Value End Y2</span><strong>₹23,04,723</strong></div>
+        </div>
+
+        <div class="return-card fade-in">
+          <h3>Final Year Returns</h3>
+          <div class="return-item"><span>Monthly Payout</span><strong>₹85,444</strong></div>
+          <div class="return-item"><span>Annual Payout</span><strong>₹10,25,329</strong></div>
+          <div class="return-item"><span>MF Value End Y3</span><strong>₹36,80,664</strong></div>
+        </div>
+      </div>
+
+      <div class="total fade-in">Total payout over 3 years: <strong>₹30,75,987</strong></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container">
+    <h2 class="section-title fade-in">Frequently Asked Questions</h2>
+    <p class="section-subtitle fade-in">
+      Quick answers to common questions. Share your specifics and we will tailor the structure accordingly.
+    </p>
+
+    <div class="faq">
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Who owns and maintains the asset?</span><span aria-hidden="true">▾</span>
+        </div>
+        <div class="faq-a">
+          Assets are owned by PrimeFlow and deployed at client sites. The client is responsible for maintenance.
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How are returns distributed?</span><span aria-hidden="true">▾</span>
+        </div>
+        <div class="faq-a">
+          Investors receive monthly EMI payouts (net of expenses) from the first month. There is an option to reinvest via SIP in mutual funds.
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Are returns guaranteed?</span><span aria-hidden="true">▾</span>
+        </div>
+        <div class="faq-a">
+          Returns are based on stable lease flows and escrow arrangements, but remain projections, not guarantees.
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What are the exit terms?</span><span aria-hidden="true">▾</span>
+        </div>
+        <div class="faq-a">
+          There is a 3-year lock-in period. The amount is returned as EMIs over this tenure.
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Who is eligible to invest?</span><span aria-hidden="true">▾</span>
+        </div>
+        <div class="faq-a">
+          Eligible investors include Individuals, HUFs, LLPs, Private Companies, Partnerships, Trusts, and NRIs.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <p class="section-subtitle fade-in">
+        For partnerships, structure details, or product fitment—reach out and we will set up a quick call.
+      </p>
+
+      <div class="contacts">
+        <div class="contact-card fade-in">
+          <h3>Nikunj Karia</h3>
+          <p><a href="tel:+919860223694">+91 9860223694</a></p>
+          <p><a href="mailto:nikunj@pmfadvisors.in">nikunj@pmfadvisors.in</a></p>
+        </div>
+
+        <div class="contact-card fade-in">
+          <h3>Preetam Gupta</h3>
+          <p><a href="tel:+919986621589">+91 9986621589</a></p>
+          <p><a href="mailto:preetamgupta9851@gmail.com">preetamgupta9851@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> PrimeFlow Asset Ventures LLP • Professional lease-based financing & premium asset leasing
+  </footer>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const allAnswers = document.querySelectorAll('.faq-a');
+
+      allAnswers.forEach(a => {
+        if (a !== answer) a.classList.remove('active');
+      });
+      answer.classList.toggle('active');
+    }
+
+    // Fade-in on scroll
+    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav link on scroll (desktop + mobile)
+    const sections = ["highlights","how-it-works","why","timeline","faq","contact"].map(id => document.getElementById(id));
+    const navLinks = Array.from(document.querySelectorAll('[data-link]'));
+
+    const setActive = () => {
+      const y = window.scrollY + 110;
+      let current = "highlights";
+      for (const s of sections) {
+        if (s && s.offsetTop <= y) current = s.id;
+      }
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === "#" + current));
+    };
+    window.addEventListener('scroll', setActive, { passive:true });
+    setActive();
+
+    // Smooth scroll and close mobile menu
+    function closeMenu(){
+      const panel = document.getElementById('menuPanel');
+      const btn = document.getElementById('menuBtn');
+      panel.style.display = "none";
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    navLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith("#")) return;
+        const el = document.querySelector(href);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        closeMenu();
+      });
+    });
+
+    // Mobile menu button
+    const menuBtn = document.getElementById('menuBtn');
+    const menuPanel = document.getElementById('menuPanel');
+    menuBtn.addEventListener('click', () => {
+      const open = menuPanel.style.display === "block";
+      menuPanel.style.display = open ? "none" : "block";
+      menuBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+    document.addEventListener('click', (e) => {
+      if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) closeMenu();
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
